@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Recompute on upgrade so existing imported JV/AE get the correct type. -->
+    <data noupdate="0">
+        <function model="account.move" name="_recompute_imported_transaction_types"/>
+    </data>
+</odoo>

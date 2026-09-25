@@ -1,0 +1,134 @@
+<odoo>
+    <data noupdate="0">
+        <record id="email_template_for_approve_budget" model="mail.template">
+            <field name="name">Budget: Approve Order</field>
+            <field name="model_id" ref="custom_aafa.model_budget_analytic" />
+            <field name="subject">Submit for Budget Approval</field>
+            <field name="email_from"></field>
+            <field name="email_to"></field>
+
+            <field name="body_html" type="html">
+                <div style="margin: 0px; padding: 0px;">
+                    <p style="margin: 0px; padding: 0px; font-size: 13px;">
+                        <h2>
+                            <b>Submit for Approval:<t t-out="object.name"/></b>
+                        </h2>
+                        <br />
+                        <br />
+                        <p>
+                            Dear Approver,
+                            <br />
+                            <br />
+                            This is inform you that budget is created and waiting for approval in your stage, kindly check and approve it accordingly.
+                            <br />
+                            <b>User:</b>
+                            <t t-out="object.user_id.name"/>
+                            <br />
+                            <b>Total Amount:</b>
+                            <t t-out="object.sum_planned_amount"/>
+                            <!-- <t t-out="format_amount(object.amount_total, object.currency_id"/> -->
+
+                            <br />
+                            <b>Approval Level:</b>
+                            <t t-out="object.label_name"/>
+                            <!-- <t t-out="
+                                dict(self._fields['label_name'].selection).get(self.label_name)"/> -->
+                            <br />
+                            <br />
+                        </p>
+                        <br />
+                        <br />
+                        
+                        As you are authorize approver as per approval level.<br />
+                        You can use the following link and approve the order<br /><br />
+
+                        <div style="display: inline-block; margin: 15px; text-align: center">
+                            
+                            <a t-attf-href="/web?#id={{ object.id }}&amp;view_type=form&amp;model=budget.analytic" target="_blank"
+                                style="padding: 5px 10px; color: #FFFFFF; text-decoration: none; background-color: #875A7B; border: 1px solid #875A7B; border-radius: 3px"
+                            >Order Ref: <t t-out="object.name"/></a>
+                        </div><br />
+                        Thanks.
+                    </p>
+                </div>
+            </field>
+        </record>
+
+       <!--  <record id="email_template_for_reject_budget" model="mail.template">
+            <field name="name">Budget: Reject Order</field>
+            <field name="model_id" ref="custom_aafa.model_crossovered_budget" />
+            <field name="subject">Reject Order</field>
+            <field name="email_from"></field>
+            <field name="email_to"></field>
+
+            <field name="body_html" type="html">
+                <div style="margin: 0px; padding: 0px;">
+                    <p style="margin: 0px; padding: 0px; font-size: 13px;">
+                        <h2>
+                            <b>Budget Rejected: ${object.name}</b>
+                        </h2>
+                        <br />
+                        <br />
+                        Dear User!!,
+                        <br />
+                        <br />
+                        Rejected Budget Information.<br />
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Date</th>
+                                    <th scope="col">Reject By</th>
+                                    <th scope="col">Reason</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <td>${object.rejection_date}</td>
+                                <td>${object.reject_by.name}</td>
+                                <td>${object.reject_reason}</td>
+                            </tbody>
+                        </table><br /><br />
+                        You can use the following link to access the Budget.<br /><br />
+                        <div style="display: inline-block; margin: 15px; text-align: center">
+                            <a href="/mail/view?model=crossovered.budget&amp;res_id=${object.id}" target="_blank"
+                                style="padding: 5px 10px; color: #FFFFFF; text-decoration: none; background-color: #875A7B; border: 1px solid #875A7B; border-radius: 3px"
+                            >Budget Ref: #${object.name}</a>
+                        </div><br />
+                        Thanks.
+                    </p>
+                </div>
+            </field>
+        </record>
+
+        <record id="email_template_for_confirm_budget" model="mail.template">
+            <field name="name">Budget: Confirm Order</field>
+            <field name="model_id" ref="custom_aafa.model_crossovered_budget" />
+            <field name="subject">Confirm Budget</field>
+            <field name="email_from"></field>
+            <field name="partner_to"></field>
+
+            <field name="body_html" type="html">
+                <div style="margin: 0px; padding: 0px;">
+                    <p style="margin: 0px; padding: 0px; font-size: 13px;">
+                        <h2>
+                            <b>Budget Confirmed: ${object.name}</b>
+                        </h2>
+                        <br />
+                        <br />
+                        Dear User!!,
+                        <br />
+                        <br />
+                        This is inform you that your budget is confirmed.<br />
+                        You can use the following link to access the budget.<br /><br />
+                        <div style="display: inline-block; margin: 15px; text-align: center">
+                            <a href="/mail/view?model=crossovered.budget&amp;res_id=${object.id}" target="_blank"
+                                style="padding: 5px 10px; color: #FFFFFF; text-decoration: none; background-color: #875A7B; border: 1px solid #875A7B; border-radius: 3px"
+                            >Budget Ref: #${object.name}</a>
+                        </div><br />
+                        Thanks.
+                    </p>
+                </div>
+            </field>
+        </record> -->
+
+    </data>
+</odoo>
