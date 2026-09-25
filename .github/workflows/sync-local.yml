@@ -12,7 +12,7 @@ jobs:
     steps:
       - name: Sync local repository
         run: |
-          cd /home/ubantu/docker_odoo/Afaik_demo
+          cd /home/ubantu/docker_odoo/GIt_Automation/Afaik_demo
 
           echo "Current directory:"
           pwd
