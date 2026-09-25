@@ -1,0 +1,29 @@
+name: Sync Code To Local
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  sync:
+    runs-on: self-hosted
+
+    steps:
+      - name: Sync local repository
+        run: |
+          cd /home/ubantu/docker_odoo/Afaik_demo
+
+          echo "Current directory:"
+          pwd
+
+          echo "Fetching latest code..."
+          git fetch origin main
+
+          echo "Resetting local code to GitHub main..."
+          git reset --hard origin/main
+
+          echo "Latest commit:"
+          git log -1 --oneline
+
+          echo "Sync completed successfully."
